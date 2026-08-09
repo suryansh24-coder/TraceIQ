@@ -1,0 +1,54 @@
+{
+  "evidence": [
+    {
+      "id": "commit_123456",
+      "source": "github",
+      "title": "Update authentication middleware logic",
+      "content": "Refactored JWT validation to use strict audience checking. Committer: s-tiwari",
+      "timestamp": "2026-08-09T14:02:00Z",
+      "relevance_score": 0.95,
+      "metadata": {"repo": "payment-api"},
+      "evidence_type": "commit"
+    },
+    {
+      "id": "deploy_prod_89",
+      "source": "github",
+      "title": "Deployment of payment-api v1.4.2",
+      "content": "Deployment completed successfully to production cluster.",
+      "timestamp": "2026-08-09T14:08:00Z",
+      "relevance_score": 0.8,
+      "metadata": {"environment": "production"},
+      "evidence_type": "deployment"
+    },
+    {
+      "id": "metric_401_spike",
+      "source": "monitoring",
+      "title": "Spike in 401 Unauthorized responses",
+      "content": "Payment API returning 401 for 80% of requests originating from the legacy checkout service.",
+      "timestamp": "2026-08-09T14:10:00Z",
+      "relevance_score": 0.99,
+      "metadata": {"service": "payment-api"},
+      "evidence_type": "metric"
+    },
+    {
+      "id": "alert_auth_fail",
+      "source": "monitoring",
+      "title": "High Authentication Failure Rate",
+      "content": "Alert triggered: Authentication failure rate exceeded 50% threshold on payment-api.",
+      "timestamp": "2026-08-09T14:12:00Z",
+      "relevance_score": 0.9,
+      "metadata": {"severity": "high"},
+      "evidence_type": "alert"
+    },
+    {
+      "id": "historical_inc_44",
+      "source": "qdrant",
+      "title": "Previous JWT audience mismatch incident",
+      "content": "In INC-2025-08, strict audience checking caused failures for legacy clients that did not send the 'aud' claim in JWTs.",
+      "timestamp": "2025-11-12T09:00:00Z",
+      "relevance_score": 0.85,
+      "metadata": {"incident_id": "INC-2025-08"},
+      "evidence_type": "historical_incident"
+    }
+  ]
+}
