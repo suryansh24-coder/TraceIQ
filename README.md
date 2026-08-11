@@ -6,7 +6,6 @@
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 [![Qdrant](https://img.shields.io/badge/Qdrant-f90b31?style=for-the-badge&logo=qdrant&logoColor=white)](https://qdrant.tech/)
 
 *Elevating Site Reliability Engineering through deterministic AI and voice interaction.*
@@ -43,7 +42,7 @@ TraceIQ is built on a highly decoupled, modular architecture. Data collection, h
 
 ### 1. Macro Component Flow
 
-This diagram illustrates how the major subsystems of TraceIQ interact, strictly delineating the frontend interface from the backend processing engine.
+This diagram illustrates how the major subsystems of TraceIQ interact, showing the backend processing engine.
 
 ```mermaid
 flowchart TD
@@ -55,12 +54,6 @@ flowchart TD
 
     User([👤 SRE / DevOps Engineer]):::user
     
-    subgraph Frontend [Client & Voice UI]
-        React[React Dashboard]:::component
-        VoiceUI[Voice UI / Console]:::component
-        Mic[Microphone Input]:::component
-        Playback[Audio Playback]:::component
-    end
     
     subgraph Backend [TraceIQ Engine]
         API[FastAPI / API Gateway]:::component
@@ -93,10 +86,7 @@ flowchart TD
     end
     
     %% Relationships
-    User -->|Speaks| Mic
-    Mic --> VoiceUI
-    VoiceUI --> React
-    React -->|POST /investigate| API
+    User -->|POST /investigate| API
     
     API --> Orchestrator
     
@@ -117,9 +107,7 @@ flowchart TD
     Rec -->|Structured Result| API
     
     API --> VoiceAPI
-    VoiceAPI -->|Audio Data| React
-    React --> Playback
-    Playback -->|Speaks Findings| User
+    VoiceAPI -->|Audio Data| User
 ```
 
 ### 2. The Investigation Sequence (Data Flow)
@@ -130,7 +118,6 @@ What exactly happens when an engineer submits an investigation request? This seq
 sequenceDiagram
     autonumber
     actor SRE as 👤 SRE
-    participant UI as Frontend (React + Voice)
     participant API as FastAPI Backend
     participant Orch as Orchestrator
     participant Context as Engineering Integrations
@@ -138,8 +125,7 @@ sequenceDiagram
     participant LLM as LLM Reasoning Node
     participant Val as Evidence Validator
     
-    SRE->>UI: Speaks Investigation Query
-    UI->>API: POST /investigate
+    SRE->>API: POST /investigate
     API->>Orch: Sanitize & Start Investigation
     
     par Evidence Collection
@@ -161,8 +147,7 @@ sequenceDiagram
     Val-->>Orch: Validated Facts
     
     Orch->>API: Generate Confidence & Recommendations
-    API-->>UI: Return Structured Result
-    UI->>SRE: Voice UI presents result
+    API-->>SRE: Return Structured Result
 ```
 
 ### 3. TraceIQ Architecture Deep Dive
@@ -174,10 +159,6 @@ For a massive, in-depth explanation of every single microservice, component, and
 ## 🚀 The Tech Stack
 
 We utilize a state-of-the-art, modern stack engineered for speed, reliability, and precision.
-
-### **Frontend & User Interface**
-- **Framework:** `React` & `Vite` - Highly responsive, component-driven dashboard.
-- **Voice UI:** Custom waveform and voice console visualization.
 
 ### **Backend & Core Engine**
 - **Framework:** `FastAPI` (Python 3.11+) - High-performance, asynchronous REST API.
@@ -215,19 +196,6 @@ TraceIQ/
 │   │   └── utils/            
 │   ├── tests/                
 │   └── Dockerfile            
-│
-├── frontend/                 
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── components/
-│   │   ├── hooks/
-│   │   ├── lib/
-│   │   ├── types/
-│   │   ├── styles/
-│   │   └── assets/
-│   ├── package.json
-│   ├── vite.config.js
-│   └── Dockerfile
 │
 ├── demo/                     
 ├── docs/                     

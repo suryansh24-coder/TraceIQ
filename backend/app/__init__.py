@@ -1,3 +1,5 @@
 """
-TraceIQ Backend App Core
+TraceIQ application package.
 """
+
+__version__ = "1.0.0"

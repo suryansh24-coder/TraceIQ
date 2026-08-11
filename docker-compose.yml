@@ -33,15 +33,6 @@ services:
       qdrant:
         condition: service_healthy
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: traceiq-frontend
-    restart: unless-stopped
-    # Note: Ports and command are intentionally omitted because the inspected
-    # frontend/package.json and frontend/vite.config.js are completely empty.
-    # We do not guess or invent a port.
 
 volumes:
   qdrant_data:
