@@ -45,7 +45,7 @@ from typing import Any, Mapping, Sequence
 
 import httpx
 
-from app.config import Settings, get_settings
+from backend.app.config import Settings, get_settings
 
 
 # ============================================================================
@@ -1103,6 +1103,15 @@ def create_monitoring_client(
         provider_name=provider_name,
     )
 
+def parse_alert_payload(payload: dict) -> dict:
+    """Extract clean error context from raw monitoring/webhook alerts."""
+    return {
+        "service": payload.get("service", "unknown-service"),
+        "error_type": payload.get("error_type", "UnhandledException"),
+        "message": payload.get("message", "No error message provided"),
+        "stack_trace": payload.get("stack_trace", ""),
+        "timestamp": payload.get("timestamp", int(time.time()))
+    }
 
 __all__ = [
     "MonitoringClient",
