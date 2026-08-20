@@ -1,0 +1,8 @@
+{
+  "repository": "laviiyy/TraceIQ",
+  "failing_file": "backend/app/main.py",
+  "branch": "main",
+  "last_error": "KeyError: 'GITHUB_TOKEN' missing in environment settings",
+  "suggested_hotfix": "# Added fallback GITHUB_TOKEN validation check\nimport os\nif 'GITHUB_TOKEN' not in os.environ:\n    raise RuntimeError('Token required')",
+  "recent_commit_sha": "a1b2c3d4e5f6"
+}
