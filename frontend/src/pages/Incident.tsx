@@ -25,8 +25,7 @@ import {
   Terminal,
   Zap,
 } from 'lucide-react';
-import { Card, SectionHeader } from '@/components/common/Card';
-import { CompleteStatusBadge, LiveStatusBadge, TrustTag } from '@/components/common/Badges';
+import { Card, SectionHeader, CompleteStatusBadge, LiveStatusBadge, TrustTag } from '@/components/ui';
 import {
   evidenceCards,
   failureChainEvents,
@@ -38,8 +37,8 @@ import {
   rootCauseConfidence,
   rootCauseReasons,
 } from '@/data/mockData';
-import type { FailureChainEvent, ProgressStage } from '@/data/mockData';
-import { AskTraceButton } from '@/components/voice/VoiceAssistant';
+import type { FailureChainEvent, ProgressStage } from '@/types';
+import { AskTraceButton } from '@/components/voice';
 
 interface IncidentProps {
   onBack: () => void;

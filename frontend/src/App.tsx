@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AppLayout } from '@/components/layout/AppLayout';
-import { EmptyView } from '@/components/layout/EmptyView';
-import { VoiceAssistant } from '@/components/voice/VoiceAssistant';
-import { Dashboard } from '@/pages/Dashboard';
-import { Incident } from '@/pages/Incident';
-import { Login } from '@/pages/Login';
+import { AppLayout, EmptyView } from '@/components/layout';
+import { VoiceAssistant } from '@/components/voice';
+import { Dashboard, Incident, Login } from '@/pages';
 
 function App() {
   const [view, setView] = useState('dashboard');

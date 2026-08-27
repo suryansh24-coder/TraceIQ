@@ -1,0 +1,1 @@
+export { VoiceAssistant, AskTraceButton } from './VoiceAssistant';

@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { ArrowRight, Github, LockKeyhole, Mail, Radar, ShieldCheck } from 'lucide-react';
-import { Logo } from '@/components/common/Logo';
+import { Logo } from '@/components/ui';
 
 interface LoginProps { onSignIn: () => void; }
 

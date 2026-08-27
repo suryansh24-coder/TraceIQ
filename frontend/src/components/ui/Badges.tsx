@@ -1,4 +1,4 @@
-import type { Severity, InvestigationStatus } from '@/data/mockData';
+import type { Severity, InvestigationStatus } from '@/types';
 
 const severityConfig: Record<Severity, { label: string; dot: string; text: string; bg: string; border: string }> = {
   critical: {

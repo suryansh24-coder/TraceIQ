@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { ArrowUpRight, Bot, ChevronRight, Clock3, GitBranch, Mic, MoreHorizontal, Search, ShieldAlert, Sparkles, Zap } from 'lucide-react';
-import { Card, SectionHeader } from '@/components/common/Card';
-import { SeverityBadge, StatusPill, TrustTag } from '@/components/common/Badges';
+import { Card, SectionHeader, SeverityBadge, StatusPill, TrustTag } from '@/components/ui';
 import { examplePrompt, recentInvestigations, systemStats } from '@/data/mockData';
-import { AskTraceButton } from '@/components/voice/VoiceAssistant';
+import { AskTraceButton } from '@/components/voice';
 
 interface DashboardProps {
   onInvestigate: (prompt?: string) => void;

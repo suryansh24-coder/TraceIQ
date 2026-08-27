@@ -1,26 +1,13 @@
-export type Severity = 'critical' | 'warning' | 'info';
-export type InvestigationStatus = 'investigated' | 'resolved' | 'investigating';
-
-export interface RecentInvestigation {
-  id: string;
-  service: string;
-  title: string;
-  severity: Severity;
-  timeAgo: string;
-  status: InvestigationStatus;
-}
-
-export interface SystemStat {
-  label: string;
-  value: string;
-  hint: string;
-}
-
-export interface NavItem {
-  id: string;
-  label: string;
-  icon: string;
-}
+import type {
+  DemoVoicePrompt,
+  EvidenceCard,
+  FailureChainEvent,
+  InvestigationStep,
+  NavItem,
+  ProgressStage,
+  RecentInvestigation,
+  SystemStat,
+} from '@/types';
 
 export const navItems: NavItem[] = [
   { id: 'overview', label: 'Overview', icon: 'LayoutDashboard' },
@@ -68,13 +55,6 @@ export const systemStats: SystemStat[] = [
 
 export const examplePrompt = 'Why is payments-v2 returning HTTP 401 authentication errors on POST /v2/charges?';
 
-export interface ProgressStage {
-  id: number;
-  label: string;
-  status: 'complete' | 'active' | 'pending';
-  detail?: string;
-}
-
 export const initialProgressStages: ProgressStage[] = [
   { id: 1, label: 'Collecting signals', status: 'complete', detail: 'GitHub, Datadog' },
   { id: 2, label: 'Analyzing logs', status: 'active', detail: 'HTTP 401 stack' },
@@ -84,11 +64,6 @@ export const initialProgressStages: ProgressStage[] = [
   { id: 6, label: 'Generating recommendation', status: 'pending', detail: 'Config fix ready' },
 ];
 
-export interface InvestigationStep {
-  id: string;
-  label: string;
-}
-
 export const investigationSteps: InvestigationStep[] = [
   { id: 'signals', label: 'Collecting telemetry signals from GitHub and Datadog APM...' },
   { id: 'logs', label: 'Analyzing HTTP 401 exception stack traces for POST /v2/charges...' },
@@ -97,13 +72,6 @@ export const investigationSteps: InvestigationStep[] = [
   { id: 'root_cause', label: 'Identifying root cause mismatch in JWT signing secret key...' },
   { id: 'recommendation', label: 'Generating actionable Kubernetes secret deployment fix preview...' },
 ];
-
-export interface DemoVoicePrompt {
-  id: string;
-  label: string;
-  transcript: string;
-  response: string;
-}
 
 export const demoVoicePrompts: DemoVoicePrompt[] = [
   {
@@ -135,16 +103,6 @@ export const demoVoicePrompts: DemoVoicePrompt[] = [
       'TraceIQ correlated 7 signals: 1) GitHub commit #a3f892 18m ago, 2) Datadog HTTP 401 surge to 142.8 err/sec, 3) 94% match against Runbook RB-104 (Service Secret Key Sync).',
   },
 ];
-
-export interface EvidenceCard {
-  id: 'github' | 'monitoring' | 'knowledge';
-  kind: 'GitHub Activity' | 'Monitoring Signals' | 'Historical Knowledge';
-  icon: string;
-  status: 'success' | 'warning' | 'info' | 'critical';
-  statusLabel: string;
-  timestamp: string;
-  points: string[];
-}
 
 export const evidenceCards: EvidenceCard[] = [
   {
@@ -206,27 +164,10 @@ export const recommendedSteps: string[] = [
   'Adopt dual-key grace period policy per Runbook RB-104 to prevent secret synchronization skew.',
 ];
 
-export interface VoiceStateContent {
-  idle: { title: string };
-  listening: { title: string; transcript: string };
-  thinking: { title: string };
-  response: { title: string; response: string };
-}
-
 export const voiceDemoTranscript = 'Why is payments-v2 returning HTTP 401 authentication errors on POST /v2/charges?';
 
 export const voiceDemoResponse =
   'TraceIQ correlated 7 telemetry signals across GitHub and Datadog. The root cause is a secret key rotation mismatch: auth-service updated its JWT signing key in commit #a3f892 18 minutes ago, but payments-v2 environment configuration was not updated in sync. Updating AUTH_SECRET_KEY in payments-v2 and triggering a pod rollout resolves the 401 error spike.';
-
-export interface FailureChainEvent {
-  id: string;
-  time: string;
-  type: 'normal' | 'warning' | 'root_cause' | 'failure';
-  typeLabel: string;
-  service: string;
-  title: string;
-  description: string;
-}
 
 export const failureChainEvents: FailureChainEvent[] = [
   {
@@ -269,4 +210,3 @@ export const failureChainEvents: FailureChainEvent[] = [
 
 export const humanExplanation =
   'In developer terms: auth-service began signing JWT tokens with a new cryptographic secret key 18 minutes ago, but payments-v2 was never updated with the new key. When payments-v2 receives a customer checkout request, it attempts to verify the authorization signature using its old secret key, fails validation, and returns an HTTP 401 Unauthorized error. Updating the payments-v2 environment secret restores normal payment processing immediately.';
-

@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import { Sidebar } from '@/components/layout/Sidebar';
-import { TopNav } from '@/components/layout/TopNav';
+import { Sidebar, TopNav } from '@/components/layout';
 
 interface AppLayoutProps {
   children: ReactNode;

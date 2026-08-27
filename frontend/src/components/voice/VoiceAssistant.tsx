@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Bot, ChevronRight, LoaderCircle, Mic, Send, Square, Terminal, X } from 'lucide-react';
 import { demoVoicePrompts, voiceDemoResponse, voiceDemoTranscript } from '@/data/mockData';
-import type { DemoVoicePrompt } from '@/data/mockData';
-import { useTypewriter } from '@/components/common/useTypewriter';
+import type { DemoVoicePrompt } from '@/types';
+import { useTypewriter } from '@/hooks/useTypewriter';
 
 type VoiceState = 'idle' | 'listening' | 'thinking' | 'response';
 

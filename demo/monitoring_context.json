@@ -1,8 +1,0 @@
-{
-  "timestamp": "2026-08-11T21:00:00Z",
-  "status_code": 500,
-  "error_type": "DatabaseConnectionTimeout",
-  "message": "could not reach PostgreSQL instance on port 5432.",
-  "impacted_service": "user-login-api",
-  "stack_trace": "sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused"
-}

@@ -12,7 +12,7 @@ import {
   X,
 } from 'lucide-react';
 import { navItems } from '@/data/mockData';
-import { Logo } from '@/components/common/Logo';
+import { Logo } from '@/components/ui';
 
 const iconMap = {
   LayoutDashboard,
