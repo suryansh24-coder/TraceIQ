@@ -11,7 +11,7 @@ While TraceIQ is a hackathon prototype, we treat security and data integrity as 
 
 ---
 
-## 🛑 1. Zero Hallucination Guarantee
+## 🛑 1. Minimum Hallucination Guarantee
 
 The most significant security risk of integrating LLMs into DevOps is the generation of fabricated facts (hallucinations), which could lead an engineer to take destructive actions.
 
